@@ -1,0 +1,11 @@
+{
+  "name": "app-design",
+  "version": "1.0.0",
+  "description": "Designing JS applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Naadjie",
+  "license": "ISC"
+}
