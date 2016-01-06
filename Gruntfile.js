@@ -1,6 +1,13 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: ['Gruntfile.js'],
+    sprite: {
+      icons: {
+        src: 'public/img/icons/*.png',
+        dest: 'build/img/icons.png',
+        destCss: 'build/css/icons.css'
+      }
+    },
     uglify: {
       cobra: {
         files: {
@@ -32,5 +39,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-spritesmith');
   grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('js', 'Concatenate and minify static Javascript assets',['concat:js', 'uglify:bundle'])
 };
