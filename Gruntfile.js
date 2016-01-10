@@ -1,5 +1,12 @@
+
+var db = require('./package.json').db;
+
 module.exports = function(grunt) {
   grunt.initConfig({
+    db_create: {
+      uri: db.uri,
+      name: db.name
+    },
     clean: {
       js: 'build/js',
       css: 'build/css',
@@ -48,14 +55,17 @@ module.exports = function(grunt) {
       }
     }
   });
+  grunt.loadTasks('./tasks');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-spritesmith');
+  grunt.registerTask('db_setup', 'Create new database', ['db_create']);
   grunt.registerTask('default', ['jshint']);
   grunt.registerTask('js', 'Concatenate and minify static Javascript assets',['concat:js', 'uglify:bundle']);
+
   grunt.registerTask('timestamp', function(){
     console.log(this);
     var options = this.options({
