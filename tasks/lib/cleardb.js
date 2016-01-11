@@ -3,7 +3,7 @@
 var exec = require('child_process').exec
 var grunt = require('grunt');
 module.exports = function(dbname) {
-  console.log('dropping database');
+  grunt.log.writeln('dropping database');
   exec('mongo ' + dbname + ' --eval "db.dropDatabase()"',
    function (error, stdout, stderr) {
      grunt.log.writeln('stdout: ' + stdout);
