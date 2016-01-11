@@ -7,10 +7,15 @@ module.exports = function(grunt){
     var mongoose = require('mongoose');
     var done = this.async();
     var options = grunt.config('db_create');
-    var uri = options.uri + options.name
+    var util = require('./lib/util.js');
+    var uri = options.uri + options.name;
+
+    util.dropdatabase(options.name);
 
     connect(uri,create);
+
     function create(connection) {
+      //
       //console.log('creating database inside create function');
       //I want to create a new mongoose schema
       //if schema already exists delete schema
