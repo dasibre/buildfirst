@@ -13,14 +13,14 @@ module.exports = function(grunt){
     util.dropdatabase(options.name);
 
     connect(uri,create);
-    
+
     function create(connection) {
       grunt.log.write('Creating "' + uri + '"...');
-      var kittySchema = connection.Schema({
+      var dev = connection.Schema({
         name: String
       })
-      var Kitten = connection.model('Kitten', kittySchema);
-      new Kitten({name: "Shadow"}).save()
+      var Dev = connection.model('Dev', dev);
+      new Dev({name: "buildfirst Schema"}).save()
       done();
     }
   })
